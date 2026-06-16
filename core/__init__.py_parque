@@ -1,0 +1,34 @@
+import pandas as pd
+import pyarrow.dataset as ds
+from pathlib import Path
+
+# sdq
+folder = Path("//corpsas01/KDrive/spar/tinker/global/dat/")
+dataset = ds.dataset(folder, format="parquet")
+table = dataset.to_table()
+df = table.to_pandas()
+
+#score
+folder2 = Path("//corpsas01/KDrive/spar/tinker/global/ext/")
+files = list(folder2.glob("*.parquet"))
+dataset2 = ds.dataset(files, format="parquet")
+table2 = dataset2.to_table()
+scorefile = table2.to_pandas()
+
+
+scorefile_sub = scorefile.drop(columns=[''])
+scorefile_sub = scorefile_sub[scorefile_sub["target"] == 1]
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+
+X = df.drop(columns=["target"])
+y = df["target"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+
+importances = pd.Series(model.feature_importances_, index=X.columns)
+print(importances.sort_values(ascending=False))
