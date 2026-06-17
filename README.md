@@ -1,0 +1,15 @@
+1. Install Python:
+
+	https://www.python.org/downloads/
+
+2. Double-click:
+
+	Step1.Setup_First_Time.bat
+
+3. Wait for installation.
+
+4. Double-click: 
+
+	Step2.Run_Tool.bat
+
+5. Tool will open in browser
