@@ -7,7 +7,7 @@ echo ======================================
 py -m venv .venv
 
 echo ======================================
-echo Activating virtual environment 1...
+echo Activating virtual environment...
 echo ======================================
 
 call .venv\Scripts\activate.bat
@@ -19,10 +19,12 @@ echo ======================================
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 echo ======================================
-echo Activating virtual environment 2...
+echo Install prerequiste packages...
 echo ======================================
 
-call .venv\Scripts\Activate.ps1
+py -m pip install --upgrade pip
+py -m pip install "streamlit>=1.45"
+py -m pip show streamlit
 
 echo ======================================
 echo Paste Zscaler into powershell:...
