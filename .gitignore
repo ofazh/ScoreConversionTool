@@ -1,4 +1,24 @@
-.venv/
+# Python
 __pycache__/
 *.pyc
-.cache/
+
+# Virtual environment
+.venv/
+venv/
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# Local caches
+cache/
+*.parquet
+
+# Exports
+*.xlsx
+*.csv
+
+# AWS
+.aws/
+
+# VS Code
+.vscode/
