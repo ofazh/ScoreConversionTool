@@ -74,6 +74,11 @@ def standardize_student_columns(df: pd.DataFrame, mapping: dict) -> pd.DataFrame
             .map(lambda x: SECTION_MAP.get(x, x))
         )
 
+    # Convert any column whose name starts with theta / THETA to numeric.
+    for col in out.columns:
+        if str(col).lower().startswith("theta"):
+            out[col] = pd.to_numeric(out[col], errors="coerce")
+
     if "production_scalescore" in out.columns:
         out["production_scalescore"] = pd.to_numeric(
             out["production_scalescore"],
