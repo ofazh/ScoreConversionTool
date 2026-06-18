@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-from core.conversion import assign_scale_scores, build_wide_comparison
+from core.conversion import assign_scale_scores
 from core.summaries import frequency_table
 
 
@@ -167,10 +167,12 @@ if "theta" in student_long_df.columns:
     student_long_df["theta"] = pd.to_numeric(student_long_df["theta"], errors="coerce")
 
 converted_long_df = assign_scale_scores(student_long_df, conversion_df)
-wide_df = build_wide_comparison(converted_long_df)
 
 st.session_state["converted_long_df"] = converted_long_df
-st.session_state["comparison_wide_df"] = wide_df
+
+# No longer building wide comparison because it can overflow pandas
+# when too many high-cardinality columns are used as pivot index.
+st.session_state["comparison_wide_df"] = None
 
 if converted_long_df is None or converted_long_df.empty:
     st.warning("No converted rows were generated. Check section labels and theta intervals.")
