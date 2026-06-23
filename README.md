@@ -11,5 +11,6 @@
 4. Double-click: 
 
 	Step2.Run_Tool.bat
+	There are 2 methods currently shown. Method2 should work for all conditions. If not, please try Method 1.
 
-5. Tool will open in browser
+6. Tool will open in browser
