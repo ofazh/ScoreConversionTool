@@ -3,7 +3,8 @@
 	https://www.python.org/downloads/
 
 2. Open "Step1.Setup_First_Time.bat" in text editor
-   Change line 33 " C:\Users\XXXX\.aws\Zscaler-AWS.pem" to your specific location.
+   
+   Change line 33 " C:\Users\XXXX\\.aws\Zscaler-AWS.pem" to your specific location.
    
 3. Double-click:
 
